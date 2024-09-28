@@ -34,44 +34,6 @@ function generateLocalesSitemap(link, allPages, locale) {
   if (locale && locale.length > 0 && locale.indexOf('/') !== 0) {
     locale = '/' + locale
   }
-  const defaultFields = [
-    {
-      loc: `${link}${locale}`,
-      lastmod: new Date().toISOString().split('T')[0],
-      changefreq: 'daily',
-      priority: '0.7'
-    },
-    {
-      loc: `${link}${locale}/archive`,
-      lastmod: new Date().toISOString().split('T')[0],
-      changefreq: 'daily',
-      priority: '0.7'
-    },
-    {
-      loc: `${link}${locale}/category`,
-      lastmod: new Date().toISOString().split('T')[0],
-      changefreq: 'daily',
-      priority: '0.7'
-    },
-    {
-      loc: `${link}${locale}/rss/feed.xml`,
-      lastmod: new Date().toISOString().split('T')[0],
-      changefreq: 'daily',
-      priority: '0.7'
-    },
-    {
-      loc: `${link}${locale}/search`,
-      lastmod: new Date().toISOString().split('T')[0],
-      changefreq: 'daily',
-      priority: '0.7'
-    },
-    {
-      loc: `${link}${locale}/tag`,
-      lastmod: new Date().toISOString().split('T')[0],
-      changefreq: 'daily',
-      priority: '0.7'
-    }
-  ]
   const postFields =
     allPages
       ?.filter(p => p.status === BLOG.NOTION_PROPERTY_NAME.status_publish)
@@ -87,7 +49,7 @@ function generateLocalesSitemap(link, allPages, locale) {
         }
       }) ?? []
 
-  return defaultFields.concat(postFields)
+  return postFields
 }
 
 export default () => {}
