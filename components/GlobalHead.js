@@ -118,6 +118,7 @@ const GlobalHead = props => {
       )}
       <meta name='keywords' content={keywords} />
       <meta name='description' content={description} />
+      <meta name="google-site-verification" content="L6kSn7Z6Lf34t7O7mKj1jGjgBmlWgghJL_XkNQe4ymQ" />
       <meta property='og:locale' content={lang} />
       <meta property='og:title' content={title} />
       <meta property='og:description' content={description} />
