@@ -115,13 +115,8 @@ const CONFIG = {
   HEO_SOCIAL_CARD: true, // 是否显示右侧，点击加入社群按钮
   HEO_SOCIAL_CARD_TITLE_1: '咨询我',
   // HEO_SOCIAL_CARD_TITLE_2: '',
-<<<<<<< HEAD
   HEO_SOCIAL_CARD_TITLE_3: '来看看我能不能帮到你吧',
   HEO_SOCIAL_CARD_URL: 'https://www.zhihu.com/consult/people/1418602787144404992',
-=======
-  // HEO_SOCIAL_CARD_TITLE_3: '',
-  HEO_SOCIAL_CARD_URL: 'https://www.zhihu.com/consult/people/1418602787144404992,
->>>>>>> 67618cae6ab55d4e72309eab2fc177f1c998079d
 
   // *****  以下配置无效，只是预留开发 ****
   // 菜单配置
