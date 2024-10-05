@@ -98,18 +98,18 @@ export default function SlideOver(props) {
                       <section className='space-y-2 flex flex-col'>
                         <div>{locale.COMMON.BLOG}</div>
                         {/* 导航按钮 */}
-                        <div className='gap-2 grid grid-cols-2'>
+                        {/* <div className='gap-2 grid grid-cols-2'>
                           <Button title={'主页'} url={'/'} />
                           <Button title={'关于'} url={'/about'} />
-                        </div>
+                        </div> */}
                         {/* 用户自定义菜单 */}
                         <MenuListSide {...props} />
                       </section>
 
-                      <section className='space-y-2 flex flex-col'>
+                      {/* <section className='space-y-2 flex flex-col'>
                         <div>{locale.COMMON.TAGS}</div>
                         <TagGroups tags={tagOptions} />
-                      </section>
+                      </section> */}
                     </div>
                   </div>
                 </Dialog.Panel>
