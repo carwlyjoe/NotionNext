@@ -113,10 +113,10 @@ const CONFIG = {
   ],
 
   HEO_SOCIAL_CARD: true, // 是否显示右侧，点击加入社群按钮
-  HEO_SOCIAL_CARD_TITLE_1: '赞助我',
+  HEO_SOCIAL_CARD_TITLE_1: '咨询我',
   // HEO_SOCIAL_CARD_TITLE_2: '',
   // HEO_SOCIAL_CARD_TITLE_3: '',
-  HEO_SOCIAL_CARD_URL: 'https://ifdian.net/order/create?user_id=229c2b28fde711eda5955254001e7c00&remark=',
+  HEO_SOCIAL_CARD_URL: 'https://www.zhihu.com/consult/people/1418602787144404992,
 
   // *****  以下配置无效，只是预留开发 ****
   // 菜单配置
