@@ -19,7 +19,7 @@ export default function RandomPostButton(props) {
   }
 
   return 
-  // 删除“随便逛逛”的播客图标，避免移动端图标重叠
+  // 我的修改：删除“随便逛逛”的播客图标，避免移动端图标重叠
   //   (
   //       <div title={locale.MENU.WALK_AROUND} className='cursor-pointer hover:bg-black hover:bg-opacity-10 rounded-full w-10 h-10 flex justify-center items-center duration-200 transition-all' onClick={handleClick}>
   //           <i className="fa-solid fa-podcast"></i>
