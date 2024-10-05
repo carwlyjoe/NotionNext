@@ -8,7 +8,8 @@ const CONFIG = {
 
   // 首页顶部通知条滚动内容，如不需要可以留空 []
   HEO_NOTICE_BAR: [
-    { title: '欢迎来到我的博客', url: '' }
+    { title: '欢迎来到我的博客', url: '' },
+    { title: '建议在电脑端使用', url: '' },
     // 我的修改：删除不想要的选项{ title: '访问文档中心获取更多帮助', url: 'https://docs.tangly1024.com' }
   ],
 
