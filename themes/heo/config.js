@@ -20,8 +20,9 @@ const CONFIG = {
   // 英雄区(首页顶部大卡)
   HEO_HERO_TITLE_1: '分享AI',
   HEO_HERO_TITLE_2: '与思维认知',
+  HEO_HERO_TITLE_5: '有什么想让我写的吗',
   // 我的修改：更改英雄区左侧轮播文字与链接：HEO_HERO_TITLE_3: '文雅的疯狂的学习笔记',
-  // HEO_HERO_TITLE_LINK: '',
+  HEO_HERO_TITLE_LINK: '/write-what',
 
   // 英雄区显示三个置顶分类
   HEO_HERO_CATEGORY_1: { title: 'QQ机器人代搭建', url: '/qq-bot' },

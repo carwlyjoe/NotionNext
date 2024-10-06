@@ -261,7 +261,7 @@ export default function CustomContextMenu(props) {
             </div>
           )}
 
-          {CUSTOM_RIGHT_CLICK_CONTEXT_MENU_THEME_SWITCH && (
+          {/* {CUSTOM_RIGHT_CLICK_CONTEXT_MENU_THEME_SWITCH && (
             <div
               onClick={handleChangeTheme}
               title={locale.MENU.THEME_SWITCH}
@@ -271,7 +271,7 @@ export default function CustomContextMenu(props) {
                 {locale.MENU.THEME_SWITCH}
               </div>
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </div>
