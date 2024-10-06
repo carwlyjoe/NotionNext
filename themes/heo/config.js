@@ -118,7 +118,6 @@ const CONFIG = {
   HEO_SOCIAL_CARD_TITLE_3: '来看看我能不能帮到你吧',
   HEO_SOCIAL_CARD_URL: 'https://www.zhihu.com/consult/people/1418602787144404992',
 
-
   // *****  以下配置无效，只是预留开发 ****
   // 菜单配置
   HEO_MENU_INDEX: true, // 显示首页
