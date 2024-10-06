@@ -8,7 +8,7 @@ const CONFIG = {
 
   // 首页顶部通知条滚动内容，如不需要可以留空 []
   HEO_NOTICE_BAR: [
-    { title: '欢迎来到我的博客', url: '' },
+    { title: '欢迎来到我的博客', url: '/laurie-note' },
     // 我的修改：删除不想要的选项{ title: '访问文档中心获取更多帮助', url: 'https://docs.tangly1024.com' }
   ],
 
@@ -24,9 +24,9 @@ const CONFIG = {
   // HEO_HERO_TITLE_LINK: '',
 
   // 英雄区显示三个置顶分类
-  HEO_HERO_CATEGORY_1: { title: '必看精选', url: '/tag/必看精选' },
-  HEO_HERO_CATEGORY_2: { title: '热门文章', url: '/tag/热门文章' },
-  HEO_HERO_CATEGORY_3: { title: '实用教程', url: '/tag/实用教程' },
+  HEO_HERO_CATEGORY_1: { title: 'QQ机器人代搭建', url: '/qq-bot' },
+  HEO_HERO_CATEGORY_2: { title: '定制脚本', url: '/script' },
+  HEO_HERO_CATEGORY_3: { title: '开发中', url: '' },
 
   // 英雄区右侧推荐文章标签, 例如 [推荐] , 最多六篇文章; 若留空白''，则推荐最近更新文章
   HEO_HERO_RECOMMEND_POST_TAG: '推荐',
@@ -115,13 +115,9 @@ const CONFIG = {
   HEO_SOCIAL_CARD: true, // 是否显示右侧，点击加入社群按钮
   HEO_SOCIAL_CARD_TITLE_1: '咨询我',
   // HEO_SOCIAL_CARD_TITLE_2: '',
-<<<<<<< HEAD
   HEO_SOCIAL_CARD_TITLE_3: '来看看我能不能帮到你吧',
   HEO_SOCIAL_CARD_URL: 'https://www.zhihu.com/consult/people/1418602787144404992',
-=======
-  // HEO_SOCIAL_CARD_TITLE_3: '',
-  HEO_SOCIAL_CARD_URL: 'https://www.zhihu.com/consult/people/1418602787144404992,
->>>>>>> 67618cae6ab55d4e72309eab2fc177f1c998079d
+
 
   // *****  以下配置无效，只是预留开发 ****
   // 菜单配置
