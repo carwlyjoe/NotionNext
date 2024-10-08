@@ -159,6 +159,15 @@ const GlobalHead = props => {
           <meta property='article:publisher' content={FACEBOOK_PAGE} />
         </>
       )}
+      {/* 添加 Google Analytics 代码 */}
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-4SY9980PD0"></script>
+      <script dangerouslySetInnerHTML={{
+        __html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-4SY9980PD0');
+        `}} />
       {children}
     </Head>
   )
