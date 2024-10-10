@@ -24,6 +24,11 @@ const CONFIG = {
   // 我的修改：更改英雄区左侧轮播文字与链接：HEO_HERO_TITLE_3: '文雅的疯狂的学习笔记',
   HEO_HERO_TITLE_LINK: '/write-what',
 
+  // HEO_HERO_TITLE_3: 'TANGLY1024.COM',
+  // HEO_HERO_TITLE_4: '新版上线',
+  // 英雄区遮罩文字
+  HEO_HERO_COVER_TITLE: '随便逛逛',
+
   // 英雄区显示三个置顶分类
   HEO_HERO_CATEGORY_1: { title: 'QQ机器人代搭建', url: '/qq-bot' },
   HEO_HERO_CATEGORY_2: { title: '定制脚本', url: '/script' },
