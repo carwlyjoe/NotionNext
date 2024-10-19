@@ -307,77 +307,7 @@ const BLOG = {
     process.env.NEXT_PUBLIC_MUSIC_PLAYER_CDN_URL ||
     'https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.js',
   MUSIC_PLAYER_ORDER: process.env.NEXT_PUBLIC_MUSIC_PLAYER_ORDER || 'list', // 默认播放方式，顺序 list，随机 random
-  MUSIC_PLAYER_AUDIO_LIST: [
-    // 示例音乐列表。除了以下配置外，还可配置歌词，具体配置项看此文档 https://aplayer.js.org/#/zh-Hans/
-    {
-      "name": "就让这大雨全部落下 - Live",
-      "artist": "Joey Yung, 汪苏泷",
-      "url": "https://img.aiexplorer.rest/pic/%E5%B0%B1%E8%AE%A9%E8%BF%99%E5%A4%A7%E9%9B%A8%E5%85%A8%E9%83%BD%E8%90%BD%E4%B8%8B%20-%20Live.mp3",
-      "cover": "https://img.aiexplorer.rest/pic/%E5%B0%B1%E8%AE%A9%E8%BF%99%E5%A4%A7%E9%9B%A8%E5%85%A8%E9%83%BD%E8%90%BD%E4%B8%8B%20-%20Live.jpg",
-      lrc: 'https://img.aiexplorer.rest/pic/%E6%B1%AA%E8%8B%8F%E6%B3%B7%E3%80%81%E5%AE%B9%E7%A5%96%E5%84%BF%20-%20%E5%B0%B1%E8%AE%A9%E8%BF%99%E5%A4%A7%E9%9B%A8%E5%85%A8%E9%83%BD%E8%90%BD%E4%B8%8B%20(Live%E7%89%88).lrc',
-    },
-    {
-      name: '众山小',
-      artist: '冯子晨',
-      url: 'https://img.aiexplorer.rest/pic/%E4%BC%97%E5%B1%B1%E5%B0%8F.mp3',
-      lrc: 'https://img.aiexplorer.rest/%E5%86%AF%E5%AD%90%E6%99%A8%20-%20%E4%BC%97%E5%B1%B1%E5%B0%8F.lrc',
-      cover:
-        'https://img.aiexplorer.rest/pic/%E4%BC%97%E5%B1%B1%E5%B0%8F.jpg'
-    },
-    {
-      name: '野人',
-      artist: '孟维来',
-      url: 'https://img.aiexplorer.rest/pic/%E9%87%8E%E4%BA%BA.mp3',
-      cover:
-        'https://img.aiexplorer.rest/pic/%E9%87%8E%E4%BA%BA.jpg',
-      lrc: 'https://img.aiexplorer.rest/pic/%E9%87%8E%E4%BA%BA.lrc',
-    },
-    {
-      "name": "功成名就",
-      "artist": "涂柚, 御鹿神谷",
-      "url": "https://img.aiexplorer.rest/pic/%E5%8A%9F%E6%88%90%E5%90%8D%E5%B0%B1.mp3",
-      "cover": "https://img.aiexplorer.rest/pic/%E5%8A%9F%E6%88%90%E5%90%8D%E5%B0%B1.jpg",
-      lrc: "https://img.aiexplorer.rest/pic/%E5%BE%A1%E9%B9%BF%E7%A5%9E%E8%B0%B7%E3%80%81%E6%BC%86%E6%9F%9A%20-%20%E5%8A%9F%E6%88%90%E5%90%8D%E5%B0%B1.lrc"
-    },
-    {
-      "name": "谪居",
-      "artist": "浅影阿, 汝音社",
-      "url": "https://img.aiexplorer.rest/pic/%E8%B0%AA%E5%B1%85.mp3",
-      "cover": "https://img.aiexplorer.rest/pic/%E8%B0%AA%E5%B1%85.jpg",
-      lrc: 'https://img.aiexplorer.rest/pic/%E6%B9%AB%E8%AF%8D%20-%20%E8%B0%AA%E5%B1%85%EF%BC%88cover%E6%B5%85%E5%BD%B1%E9%98%BF_%E6%B1%90%E9%9F%B3%E7%A4%BE%EF%BC%89.lrc'
-    },
-    {
-      "name": "Fire On Fire",
-      "artist": "Sam Smith",
-      "url": "https://img.aiexplorer.rest/pic/Fire%20On%20Fire.mp3",
-      "cover": "https://img.aiexplorer.rest/pic/Fire%20On%20Fire.jpg"
-    },
-    {
-      "name": "Just A Dream",
-      "artist": "Kurt Hugo Schneider, Christina Grimmie, Sam Tsui",
-      "url": "https://img.aiexplorer.rest/pic/Just%20A%20Dream.mp3",
-      "cover": "https://img.aiexplorer.rest/pic/Just%20A%20Dream.jpg"
-    },
-    {
-      "name": "Stitches",
-      "artist": "Shawn Mendes",
-      "url": "https://img.aiexplorer.rest/pic/Stitches.mp3",
-      "cover": "https://img.aiexplorer.rest/pic/Stitches.jpg"
-    },
-    {
-      "name": "Ferrari",
-      "artist": "Bebe Rexha",
-      "url": "https://img.aiexplorer.rest/pic/Ferrari.mp3",
-      "cover": "https://img.aiexplorer.rest/pic/Ferrari.jpg"
-    },
-    {
-      "name": "There's Nothing Holdin' Me Back",
-      "artist": "Shawn Mendes",
-      "url": "https://img.aiexplorer.rest/pic/There%27s%20Nothing%20Holdin%27%20Me%20Back.mp3",
-      "cover": "https://img.aiexplorer.rest/pic/There%27s%20Nothing%20Holdin%27%20Me%20Back.jpg"
-    }
-  
-  ],
+
   MUSIC_PLAYER_METING: process.env.NEXT_PUBLIC_MUSIC_PLAYER_METING || false, // 是否要开启 MetingJS，从平台获取歌单。会覆盖自定义的 MUSIC_PLAYER_AUDIO_LIST，更多配置信息：https://github.com/metowolf/MetingJS
   MUSIC_PLAYER_METING_SERVER:
     process.env.NEXT_PUBLIC_MUSIC_PLAYER_METING_SERVER || 'netease', // 音乐平台，[netease, tencent, kugou, xiami, baidu]
@@ -385,6 +315,7 @@ const BLOG = {
     process.env.NEXT_PUBLIC_MUSIC_PLAYER_METING_ID || '60198', // 对应歌单的 id
   MUSIC_PLAYER_METING_LRC_TYPE:
     process.env.NEXT_PUBLIC_MUSIC_PLAYER_METING_LRC_TYPE || '1', // 可选值： 3 | 1 | 0（0：禁用 lrc 歌词，1：lrc 格式的字符串，3：lrc 文件 url）
+  MUSIC_PLAYER_AUDIO_LIST:process.env.NEXT_PUBLIC_MUSIC_PLAYER_AUDIO_LIST || '', //不用管，在vercel环境变量中修改
 
   //   ********挂件组件相关********
   // ----> 评论互动 可同时开启多个支持 WALINE VALINE GISCUS CUSDIS UTTERRANCES GITALK
