@@ -22,7 +22,7 @@ const CONFIG = {
   HEO_HERO_TITLE_2: '与思维认知',
   HEO_HERO_TITLE_5: '有什么想让我写的吗',
   // 我的修改：更改英雄区左侧轮播文字与链接：HEO_HERO_TITLE_3: '文雅的疯狂的学习笔记',
-  HEO_HERO_TITLE_LINK: '/write-what',
+  HEO_HERO_TITLE_LINK: 'https://www.aiexplorer.rest/article/write-what1',
 
   // HEO_HERO_TITLE_3: 'TANGLY1024.COM',
   // HEO_HERO_TITLE_4: '新版上线',
