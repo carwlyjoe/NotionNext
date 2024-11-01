@@ -44,6 +44,18 @@ const Player = () => {
     }
   
     if (!meting && window.APlayer) {
+      // 添加全局样式
+      const style = document.createElement('style');
+      style.textContent = `
+        .aplayer-lrc-current {
+          color: #4CAF50 !important;
+          font-weight: bold !important;
+          text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5) !important;
+          font-size: 25px !important;
+        }
+      `;
+      document.head.appendChild(style);
+  
       const newPlayer = new window.APlayer({
         container: ref.current,
         fixed: true,
@@ -52,68 +64,53 @@ const Player = () => {
         order: order,
         audio: audio,
       });
-
-      
-    // 监听播放状态变化
-    newPlayer.on('play', () => {
-      setIsPlaying(true);
-      const lrcContents = document.querySelector('.aplayer-lrc-contents');
-      if (lrcContents) {
-        lrcContents.style.visibility = 'visible';
-        lrcContents.style.opacity = '1';
-      }
-    });
-
-    newPlayer.on('pause', () => {
-      setIsPlaying(false);
-      const lrcContents = document.querySelector('.aplayer-lrc-contents');
-      if (lrcContents) {
-        lrcContents.style.visibility = 'hidden';
-        lrcContents.style.opacity = '0';
-      }
-    });
   
-      // 设置初始歌词样式和滚动条
+      // 监听播放状态变化
+      newPlayer.on('play', () => {
+        setIsPlaying(true);
+        const lrcContents = document.querySelector('.aplayer-lrc-contents');
+        if (lrcContents) {
+          lrcContents.style.visibility = 'visible';
+          lrcContents.style.opacity = '1';
+        }
+      });
+  
+      newPlayer.on('pause', () => {
+        setIsPlaying(false);
+        const lrcContents = document.querySelector('.aplayer-lrc-contents');
+        if (lrcContents) {
+          lrcContents.style.visibility = 'hidden';
+          lrcContents.style.opacity = '0';
+        }
+      });
+  
+      // 设置初始歌词样式，只在加载时执行一次
       newPlayer.on('loadeddata', () => {
         const lrcContents = document.querySelector('.aplayer-lrc-contents');
         if (lrcContents) {
-          lrcContents.style.fontSize = '30px'; // 设置字体大小
-          lrcContents.style.color = 'rgb(255, 215, 0)'; // 设置字体颜色
-          lrcContents.style.textAlign = 'center'; // 居中对齐
-          lrcContents.style.lineHeight = '1.8'; // 设置行高，避免文字重叠
-          lrcContents.style.maxHeight = '400px'; // 限制最大高度，避免溢出
-          lrcContents.style.overflowY = 'auto'; // 启用滚动条，防止内容溢出
-          lrcContents.style.padding = '10px'; // 添加内边距，避免遮挡
+          // 基础样式设置
+          lrcContents.style.fontSize = '30px';
+          lrcContents.style.color = 'rgb(255, 215, 0)';
+          lrcContents.style.textAlign = 'center';
+          lrcContents.style.lineHeight = '1.8';
+          lrcContents.style.maxHeight = '400px';
+          lrcContents.style.overflowY = 'auto';
+          lrcContents.style.padding = '10px';
+          
+          // 动画和显示控制
           lrcContents.style.transition = 'opacity 0.3s ease-in-out';
-          // 初始状态设置
           lrcContents.style.visibility = isPlaying ? 'visible' : 'hidden';
           lrcContents.style.opacity = isPlaying ? '1' : '0';
         }
       });
-      
   
-      // 监听时间更新事件，确保高亮歌词样式生效
+      // 只监听滚动高度更新
       newPlayer.on('timeupdate', () => {
-
-        
-        const currentLrc = document.querySelector('.aplayer-lrc-current');
-        if (currentLrc) {
-          currentLrc.style.color = '#4CAF50'; // 高亮绿色
-          currentLrc.style.fontWeight = 'bold'; // 加粗
-          currentLrc.style.textShadow = '2px 2px 5px rgba(0, 0, 0, 0.5)'; // 添加阴影
-          currentLrc.style.fontSize = '25px'; // 调整字体大小
-        }
-  
-        // 确保歌词容器自适应高度
         const lrcContents = document.querySelector('.aplayer-lrc-contents');
         if (lrcContents) {
           lrcContents.style.maxHeight = `${lrcContents.scrollHeight}px`;
         }
-        
-
       });
-
-      
   
       setPlayer(newPlayer);
     }
