@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from 'react';
  */
 const Player = () => {
   const [player, setPlayer] = useState();
+  const [isPlaying, setIsPlaying] = useState(false); // 添加新的状态
   const ref = useRef(null);
 
   const lrcType = JSON.parse(siteConfig('MUSIC_PLAYER_LRC_TYPE'));
@@ -51,6 +52,26 @@ const Player = () => {
         order: order,
         audio: audio,
       });
+
+      
+    // 监听播放状态变化
+    newPlayer.on('play', () => {
+      setIsPlaying(true);
+      const lrcContents = document.querySelector('.aplayer-lrc-contents');
+      if (lrcContents) {
+        lrcContents.style.visibility = 'visible';
+        lrcContents.style.opacity = '1';
+      }
+    });
+
+    newPlayer.on('pause', () => {
+      setIsPlaying(false);
+      const lrcContents = document.querySelector('.aplayer-lrc-contents');
+      if (lrcContents) {
+        lrcContents.style.visibility = 'hidden';
+        lrcContents.style.opacity = '0';
+      }
+    });
   
       // 设置初始歌词样式和滚动条
       newPlayer.on('loadeddata', () => {
@@ -63,12 +84,18 @@ const Player = () => {
           lrcContents.style.maxHeight = '400px'; // 限制最大高度，避免溢出
           lrcContents.style.overflowY = 'auto'; // 启用滚动条，防止内容溢出
           lrcContents.style.padding = '10px'; // 添加内边距，避免遮挡
+          lrcContents.style.transition = 'opacity 0.3s ease-in-out';
+          // 初始状态设置
+          lrcContents.style.visibility = isPlaying ? 'visible' : 'hidden';
+          lrcContents.style.opacity = isPlaying ? '1' : '0';
         }
       });
       
   
       // 监听时间更新事件，确保高亮歌词样式生效
       newPlayer.on('timeupdate', () => {
+
+        
         const currentLrc = document.querySelector('.aplayer-lrc-current');
         if (currentLrc) {
           currentLrc.style.color = '#4CAF50'; // 高亮绿色
@@ -82,7 +109,11 @@ const Player = () => {
         if (lrcContents) {
           lrcContents.style.maxHeight = `${lrcContents.scrollHeight}px`;
         }
+        
+
       });
+
+      
   
       setPlayer(newPlayer);
     }
