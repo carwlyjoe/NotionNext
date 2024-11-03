@@ -9,7 +9,7 @@ const CONFIG = {
   // 首页顶部通知条滚动内容，如不需要可以留空 []
   HEO_NOTICE_BAR: [
     { title: '欢迎来到我的博客', url: '/laurie-note' },
-    { title: '逛逛我的小店', url: 'https://shop.aiexplorer.rest' }
+   // { title: '逛逛我的小店', url: 'https://shop.aiexplorer.rest' }
   ],
 
   // 英雄区左右侧组件颠倒位置
@@ -30,9 +30,9 @@ const CONFIG = {
   HEO_HERO_COVER_TITLE: '随便逛逛',
 
   // 英雄区显示三个置顶分类
-  HEO_HERO_CATEGORY_1: { title: 'QQ机器人代搭建', url: '/qq-bot' },
-  HEO_HERO_CATEGORY_2: { title: '定制脚本', url: '/script' },
-  HEO_HERO_CATEGORY_3: { title: '开发中', url: '' },
+  HEO_HERO_CATEGORY_1: { title: 'GPT4QQ机器人', url: 'https://qm.qq.com/q/QvzD5AmD0I' },
+  HEO_HERO_CATEGORY_2: { title: '免费使用GPT4', url: 'https://chat.aiexplorer.rest/' },
+  HEO_HERO_CATEGORY_3: { title: '逛逛我的小店', url: 'https://shop.aiexplorer.rest' },
 
   // 英雄区右侧推荐文章标签, 例如 [推荐] , 最多六篇文章; 若留空白''，则推荐最近更新文章
   HEO_HERO_RECOMMEND_POST_TAG: '推荐',
