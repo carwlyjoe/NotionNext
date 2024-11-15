@@ -6,7 +6,7 @@ import { generateRss } from '@/lib/rss'
 import { generateSitemapXml } from '@/lib/sitemap.xml'
 import { getLayoutByTheme } from '@/themes/theme'
 import { useRouter } from 'next/router'
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
 /**
  * 首页布局
  * @param {*} props
@@ -58,7 +58,7 @@ export async function getStaticProps(req) {
       post.blockMap = await getPostBlocks(post.id, 'slug', POST_PREVIEW_LINES)
     }
   }
-
+  <SpeedInsights />
   // 生成robotTxt
   generateRobotsTxt(props)
   // 生成Feed订阅
@@ -82,4 +82,10 @@ export async function getStaticProps(req) {
   }
 }
 
+
+
+
+
 export default Index
+
+
