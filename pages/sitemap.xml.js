@@ -17,7 +17,13 @@ export const getServerSideProps = async ctx => {
       pageId: id,
       from: 'sitemap.xml'
     })
-    const link = siteConfig('LINK', '', siteData.NOTION_CONFIG)
+    // 修改这行，使用 BLOG.LINK 作为默认值
+    const link = siteConfig('LINK', BLOG.LINK, siteData.NOTION_CONFIG)
+    // 确保 link 有值
+    if (!link) {
+      console.warn('Warning: LINK is not configured in blog.config.js')
+      continue
+    }
     const localeFields = generateLocalesSitemap(link, siteData.allPages, locale)
     fields = fields.concat(localeFields)
   }
@@ -31,9 +37,15 @@ export const getServerSideProps = async ctx => {
 }
 
 function generateLocalesSitemap(link, allPages, locale) {
-  if (locale && locale.length > 0 && locale.indexOf('/') !== 0) {
-    locale = '/' + locale
+  // 确保 link 末尾没有斜杠
+  const baseURL = link?.endsWith('/') ? link.slice(0, -1) : link
+  
+  // 确保 locale 正确处理
+  let localePrefix = ''
+  if (locale && locale.length > 0) {
+    localePrefix = locale.startsWith('/') ? locale : `/${locale}`
   }
+  
   const postFields =
     allPages
       ?.filter(p => p.status === BLOG.NOTION_PROPERTY_NAME.status_publish)
@@ -42,7 +54,7 @@ function generateLocalesSitemap(link, allPages, locale) {
           ? post?.slug?.slice(1)
           : post.slug
         return {
-          loc: `${link}${locale}/${slugWithoutLeadingSlash}`,
+          loc: `${baseURL}${localePrefix}/${slugWithoutLeadingSlash}`,
           lastmod: new Date(post?.publishDay).toISOString().split('T')[0],
           changefreq: 'daily',
           priority: '0.7'
