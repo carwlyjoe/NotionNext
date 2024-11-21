@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from 'react';
  */
 const Player = () => {
   const [player, setPlayer] = useState();
-  const [isPlaying, setIsPlaying] = useState(false); // 添加新的状态
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const ref = useRef(null);
 
@@ -34,7 +34,6 @@ const Player = () => {
     if (!musicPlayerEnable) return;
   
     try {
-      // 加载 APlayer JS 资源
       await loadExternalResource(musicPlayerCDN, 'js');
     } catch (error) {
       console.error('音乐组件加载失败', error);
@@ -54,44 +53,64 @@ const Player = () => {
         audio: audio,
       });
 
-  // 添加切换歌曲事件监听
-  newPlayer.on('listswitch', () => {
-    // 如果播放器正在播放，确保歌词显示
-    if (!newPlayer.paused) {
-      setIsPlaying(true);
-      const lrcContents = document.querySelector('.aplayer-lrc-contents');
-      if (lrcContents) {
-        lrcContents.style.visibility = 'visible';
-        lrcContents.style.opacity = '1';
-      }
-    }
-  });
-        // 添加错误处理
-  newPlayer.on('error', (e) => {
-    console.log('播放器错误:', e);
-    // 阻止自动播放下一首
-    newPlayer.pause();
-  });
-    // 监听播放状态变化
-    newPlayer.on('play', () => {
-      setIsPlaying(true);
-      const lrcContents = document.querySelector('.aplayer-lrc-contents');
-      if (lrcContents) {
-        lrcContents.style.visibility = 'visible';
-        lrcContents.style.opacity = '1';
-      }
-    });
+      // 添加切换歌曲事件监听
+      newPlayer.on('listswitch', () => {
+        if (!newPlayer.paused) {
+          setIsPlaying(true);
+          const lrcContents = document.querySelector('.aplayer-lrc-contents');
+          if (lrcContents) {
+            lrcContents.style.visibility = 'visible';
+            lrcContents.style.opacity = '1';
+          }
+        }
+      });
 
-    newPlayer.on('pause', () => {
-      setIsPlaying(false);
-      const lrcContents = document.querySelector('.aplayer-lrc-contents');
-      if (lrcContents) {
-        lrcContents.style.visibility = 'hidden';
-        lrcContents.style.opacity = '0';
-      }
-    });
+      // 添加错误处理
+      newPlayer.on('error', (e) => {
+        console.log('播放器错误:', e);
+        newPlayer.pause();
+      });
 
-      // 设置初始歌词样式和滚动条
+      // 监听播放状态变化
+      newPlayer.on('play', () => {
+        setIsPlaying(true);
+        const lrcContents = document.querySelector('.aplayer-lrc-contents');
+        if (lrcContents) {
+          // 先设置所有样式
+          lrcContents.style.fontSize = '30px';
+          lrcContents.style.color = 'rgb(255, 215, 0)';
+          lrcContents.style.textAlign = 'center';
+          lrcContents.style.lineHeight = '1.8';
+          lrcContents.style.maxHeight = '400px';
+          lrcContents.style.overflowY = 'auto';
+          lrcContents.style.padding = '10px';
+          lrcContents.style.transition = 'visibility 0.3s, opacity 0.3s';
+
+          // 设置当前播放歌词的样式
+          const currentLrc = document.querySelector('.aplayer-lrc-current');
+          if (currentLrc) {
+            currentLrc.style.color = '#4CAF50';
+            currentLrc.style.fontWeight = 'bold';
+            currentLrc.style.textShadow = '2px 2px 5px rgba(0, 0, 0, 0.5)';
+            currentLrc.style.fontSize = '25px';
+          }
+
+          // 最后设置显示
+          lrcContents.style.visibility = 'visible';
+          lrcContents.style.opacity = '1';
+        }
+      });
+
+      newPlayer.on('pause', () => {
+        setIsPlaying(false);
+        const lrcContents = document.querySelector('.aplayer-lrc-contents');
+        if (lrcContents) {
+          lrcContents.style.visibility = 'hidden';
+          lrcContents.style.opacity = '0';
+        }
+      });
+
+      // 设置初始歌词样式 - 只保留错误处理
       newPlayer.on('loadeddata', () => {
         const audio = newPlayer.audio;
         if (audio) {
@@ -100,56 +119,41 @@ const Player = () => {
             newPlayer.pause();
           };
         }
+        // 初始状态设置为隐藏
         const lrcContents = document.querySelector('.aplayer-lrc-contents');
         if (lrcContents) {
-          lrcContents.style.fontSize = '30px'; // 设置字体大小
-          lrcContents.style.color = 'rgb(255, 215, 0)'; // 设置字体颜色
-          lrcContents.style.textAlign = 'center'; // 居中对齐
-          lrcContents.style.lineHeight = '1.8'; // 设置行高，避免文字重叠
-          lrcContents.style.maxHeight = '400px'; // 限制最大高度，避免溢出
-          lrcContents.style.overflowY = 'auto'; // 启用滚动条，防止内容溢出
-          lrcContents.style.padding = '10px'; // 添加内边距，避免遮挡
-        // 不要使用 display: none，改用 visibility 和 opacity
-        lrcContents.style.visibility = isPlaying ? 'visible' : 'hidden';
-        lrcContents.style.opacity = isPlaying ? '1' : '0';
-
-      // 根据播放状态设置可见性
-      if (!newPlayer.paused) {
-        lrcContents.style.visibility = 'visible';
-        lrcContents.style.opacity = '1';
-      } else {
-        lrcContents.style.visibility = 'hidden';
-        lrcContents.style.opacity = '0';
-      }
-    }
-      });
-      
-  
-      // 监听时间更新事件，确保高亮歌词样式生效
-      newPlayer.on('timeupdate', () => {
-        const currentLrc = document.querySelector('.aplayer-lrc-current');
-        if (currentLrc) {
-          currentLrc.style.color = '#4CAF50'; // 高亮绿色
-          currentLrc.style.fontWeight = 'bold'; // 加粗
-          currentLrc.style.textShadow = '2px 2px 5px rgba(0, 0, 0, 0.5)'; // 添加阴影
-          currentLrc.style.fontSize = '25px'; // 调整字体大小
+          lrcContents.style.visibility = 'hidden';
+          lrcContents.style.opacity = '0';
         }
-  
-        // 确保歌词容器自适应高度
+      });
+
+      // 移除 timeupdate 事件中的样式设置，因为已经在 play 事件中设置了
+      newPlayer.on('timeupdate', () => {
         const lrcContents = document.querySelector('.aplayer-lrc-contents');
         if (lrcContents) {
-          lrcContents.style.maxHeight = `${lrcContents.scrollHeight}px`;        }
+          lrcContents.style.maxHeight = `${lrcContents.scrollHeight}px`;
+        }
       });
-  
+
       setPlayer(newPlayer);
     }
   };
-  
-  
 
   useEffect(() => {
+    const styleElement = document.createElement('style');
+    styleElement.textContent = `
+      .aplayer-lrc-contents {
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0.3s, opacity 0.3s;
+      }
+    `;
+    document.head.appendChild(styleElement);
     initMusicPlayer();
-    return () => setPlayer(undefined);
+    return () => {
+      setPlayer(undefined);
+      document.head.removeChild(styleElement);
+    };
   }, []);
 
   return (
