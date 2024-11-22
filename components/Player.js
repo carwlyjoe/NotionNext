@@ -76,26 +76,6 @@ const Player = () => {
         setIsPlaying(true);
         const lrcContents = document.querySelector('.aplayer-lrc-contents');
         if (lrcContents) {
-          // 先设置所有样式
-          lrcContents.style.fontSize = '30px';
-          lrcContents.style.color = 'rgb(255, 215, 0)';
-          lrcContents.style.textAlign = 'center';
-          lrcContents.style.lineHeight = '1.8';
-          lrcContents.style.maxHeight = '400px';
-          lrcContents.style.overflowY = 'auto';
-          lrcContents.style.padding = '10px';
-          lrcContents.style.transition = 'visibility 0.3s, opacity 0.3s';
-
-          // 设置当前播放歌词的样式
-          const currentLrc = document.querySelector('.aplayer-lrc-current');
-          if (currentLrc) {
-            currentLrc.style.color = '#4CAF50';
-            currentLrc.style.fontWeight = 'bold';
-            currentLrc.style.textShadow = '2px 2px 5px rgba(0, 0, 0, 0.5)';
-            currentLrc.style.fontSize = '25px';
-          }
-
-          // 最后设置显示
           lrcContents.style.visibility = 'visible';
           lrcContents.style.opacity = '1';
         }
