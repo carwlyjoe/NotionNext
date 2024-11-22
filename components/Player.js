@@ -101,10 +101,10 @@ const Player = () => {
         }
         // 初始状态设置为隐藏
         const lrcContents = document.querySelector('.aplayer-lrc-contents');
-        if (lrcContents) {
-          lrcContents.style.visibility = 'hidden';
-          lrcContents.style.opacity = '0';
-        }
+        // if (lrcContents) {
+        //   lrcContents.style.visibility = 'hidden';
+        //   lrcContents.style.opacity = '0';
+        // }
       });
 
       // 移除 timeupdate 事件中的样式设置，因为已经在 play 事件中设置了
