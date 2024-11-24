@@ -12,18 +12,11 @@ export const getServerSideProps = async ctx => {
     const siteId = siteIds[index]
     const id = extractLangId(siteId)
     const locale = extractLangPrefix(siteId)
-    // 第一个id站点默认语言
     const siteData = await getGlobalData({
       pageId: id,
       from: 'sitemap.xml'
     })
-    // 修改这行，使用 BLOG.LINK 作为默认值
     const link = siteConfig('LINK', BLOG.LINK, siteData.NOTION_CONFIG)
-    // 确保 link 有值
-    if (!link) {
-      console.warn('Warning: LINK is not configured in blog.config.js')
-      continue
-    }
     const localeFields = generateLocalesSitemap(link, siteData.allPages, locale)
     fields = fields.concat(localeFields)
   }
@@ -37,15 +30,49 @@ export const getServerSideProps = async ctx => {
 }
 
 function generateLocalesSitemap(link, allPages, locale) {
-  // 确保 link 末尾没有斜杠
-  const baseURL = link?.endsWith('/') ? link.slice(0, -1) : link
-  
-  // 确保 locale 正确处理
-  let localePrefix = ''
-  if (locale && locale.length > 0) {
-    localePrefix = locale.startsWith('/') ? locale : `/${locale}`
+  // 移除 link 末尾的斜杠
+  link = link.replace(/\/$/, '')
+  if (locale && locale.length > 0 && locale.indexOf('/') !== 0) {
+    locale = '/' + locale
   }
-  
+  const defaultFields = [
+    {
+      loc: `${link}${locale}`,
+      lastmod: new Date().toISOString().split('T')[0],
+      changefreq: 'daily',
+      priority: '0.7'
+    },
+    {
+      loc: `${link}${locale}/archive`,
+      lastmod: new Date().toISOString().split('T')[0],
+      changefreq: 'daily',
+      priority: '0.7'
+    },
+    {
+      loc: `${link}${locale}/category`,
+      lastmod: new Date().toISOString().split('T')[0],
+      changefreq: 'daily',
+      priority: '0.7'
+    },
+    {
+      loc: `${link}${locale}/rss/feed.xml`,
+      lastmod: new Date().toISOString().split('T')[0],
+      changefreq: 'daily',
+      priority: '0.7'
+    },
+    {
+      loc: `${link}${locale}/search`,
+      lastmod: new Date().toISOString().split('T')[0],
+      changefreq: 'daily',
+      priority: '0.7'
+    },
+    {
+      loc: `${link}${locale}/tag`,
+      lastmod: new Date().toISOString().split('T')[0],
+      changefreq: 'daily',
+      priority: '0.7'
+    }
+  ]
   const postFields =
     allPages
       ?.filter(p => p.status === BLOG.NOTION_PROPERTY_NAME.status_publish)
@@ -54,14 +81,14 @@ function generateLocalesSitemap(link, allPages, locale) {
           ? post?.slug?.slice(1)
           : post.slug
         return {
-          loc: `${baseURL}${localePrefix}/${slugWithoutLeadingSlash}`,
+          loc: `${link}${locale}/${slugWithoutLeadingSlash}`,
           lastmod: new Date(post?.publishDay).toISOString().split('T')[0],
           changefreq: 'daily',
           priority: '0.7'
         }
       }) ?? []
 
-  return postFields
+  return defaultFields.concat(postFields)
 }
 
 export default () => {}
