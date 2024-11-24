@@ -35,7 +35,9 @@ const Footer = () => {
           <i className={`fas fa-chevron-down transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
         </button>
         <div className={`px-6 overflow-hidden transition-all duration-300 ${isExpanded ? 'max-h-48 py-4' : 'max-h-0'}`}>
-          {children}
+          <div className='text-left'>
+            {children}
+          </div>
         </div>
       </div>
     );
@@ -132,7 +134,7 @@ const Footer = () => {
         <div className='md:hidden'>
           {/* 移动端下拉菜单 */}
           <MobileDropdown title="联系我">
-            <div className='space-y-2'>
+            <div className='space-y-2 text-left'>
               <a href={`mailto:${siteConfig('CONTACT_EMAIL')}`} className='block hover:text-blue-500'>
                 <i className='fas fa-envelope mr-2' />
                 邮件联系
@@ -147,7 +149,7 @@ const Footer = () => {
           </MobileDropdown>
 
           <MobileDropdown title="我的社媒">
-            <div className='space-y-2'>
+            <div className='space-y-2 text-left'>
               {friendLinks.map((link, index) => (
                 <a key={index} href={link.url} className='block hover:text-blue-500'>
                   {link.name}
@@ -157,7 +159,7 @@ const Footer = () => {
           </MobileDropdown>
 
           <MobileDropdown title="支持">
-            <div className='space-y-2'>
+            <div className='space-y-2 text-left'>
               {supportLinks.map((link, index) => (
                 <a key={index} href={link.url} className='block hover:text-blue-500'>
                   {link.name}

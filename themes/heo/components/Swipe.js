@@ -1,5 +1,6 @@
 import { isBrowser } from '@/lib/utils'
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
 /**
  * 一个swipe组件
@@ -9,10 +10,17 @@ import { useEffect, useState } from 'react'
  */
 export function Swipe({ items }) {
   const [activeIndex, setActiveIndex] = useState(0)
+  const router = useRouter()
 
   const handleClick = item => {
     if (isBrowser) {
-      window.open(item?.url)
+      // 如果是内部链接(以/开头)
+      if (item?.url.startsWith('/')) {
+        router.push(item.url)
+      } else {
+        // 外部链接在新窗口打开
+        window.open(item?.url, '_blank')
+      }
     }
   }
 

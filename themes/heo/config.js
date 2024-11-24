@@ -4,11 +4,11 @@ const CONFIG = {
 
   HEO_HOME_BANNER_ENABLE: true,
 
-  HEO_SITE_CREATE_TIME: '2021-09-21', // 建站日期，用于计算网站运行的第几天
+  HEO_SITE_CREATE_TIME: '2023-09-21', // 建站日期，用于计算网站运行的第几天
 
   // 首页顶部通知条滚动内容，如不需要可以留空 []
   HEO_NOTICE_BAR: [
-    { title: '欢迎来到我的博客', url: '/laurie-note' },
+    { title: '欢迎来到我的博客', url: '/about' },
     { title: '免费使用GPT4', url: 'https://chat.aiexplorer.rest/' },
     { title: 'GPT4QQ机器人', url: 'https://qm.qq.com/q/QvzD5AmD0I' }
   ],
