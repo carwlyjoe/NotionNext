@@ -145,16 +145,10 @@ const Player = () => {
       />
       {meting ? (
         <meting-js
-<<<<<<< HEAD
           fixed="true"
           type="playlist"
           preload="auto"
           lrc-type={siteConfig('MUSIC_PLAYER_METING_LRC_TYPE')}
-=======
-          fixed='true'
-          type='playlist'
-          preload='auto'
->>>>>>> upstream/main
           api={siteConfig(
             'MUSIC_PLAYER_METING_API',
             'https://api.i-meto.com/meting/api?server=:server&type=:type&id=:id&r=:r'
