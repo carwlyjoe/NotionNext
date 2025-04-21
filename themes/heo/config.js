@@ -8,9 +8,7 @@ const CONFIG = {
 
   // 首页顶部通知条滚动内容，如不需要可以留空 []
   HEO_NOTICE_BAR: [
-    { title: '欢迎来到我的博客', url: '/about' },
-    { title: '免费使用GPT4', url: 'https://chat.aiexplorer.rest/' },
-    { title: 'GPT4QQ机器人', url: 'https://qm.qq.com/q/QvzD5AmD0I' }
+    { title: '欢迎来到我的博客', url: '/about' }
   ],
 
   // 英雄区左右侧组件颠倒位置
@@ -23,7 +21,7 @@ const CONFIG = {
   HEO_HERO_TITLE_2: '与思维认知',
   HEO_HERO_TITLE_5: '有什么想让我写的吗',
   // 我的修改：更改英雄区左侧轮播文字与链接：HEO_HERO_TITLE_3: '文雅的疯狂的学习笔记',
-  HEO_HERO_TITLE_LINK: 'https://www.aiexplorer.rest/article/write-what1',
+  HEO_HERO_TITLE_LINK: 'https://www.aiexplorernote.com/article/write-what1',
 
   // HEO_HERO_TITLE_3: 'TANGLY1024.COM',
   // HEO_HERO_TITLE_4: '新版上线',

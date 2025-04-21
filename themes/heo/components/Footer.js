@@ -76,7 +76,7 @@ const Footer = () => {
               />
               <div className='flex flex-col items-start'>
                 <a 
-                  href='https://www.aiexplorer.rest/about'
+                  href='https://www.aiexplorernote.com/about'
                   className='font-bold text-lg text-black dark:text-white hover:text-blue-500 dark:hover:text-blue-400'
                 >
                   {siteConfig('AUTHOR_NAME', '文雅的疯狂')}
@@ -178,7 +178,7 @@ const Footer = () => {
               />
               <div className='flex flex-col items-center'>
                 <a 
-                  href='https://www.aiexplorer.rest/about'
+                  href='https://www.aiexplorernote.com/about'
                   className='font-bold text-lg text-black dark:text-white hover:text-blue-500 dark:hover:text-blue-400'
                 >
                   {siteConfig('AUTHOR_NAME', '文雅的疯狂')}
